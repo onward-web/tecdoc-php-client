@@ -124,7 +124,7 @@ class Client
         throw new RuntimeException("HTTP request failed with code {$response->getStatusCode()}");
     }
 
-    private static function recursivelyRemoveIntermediatePropsNamedArray($obj, $parentObj = null, $propName = null)
+    protected static function recursivelyRemoveIntermediatePropsNamedArray($obj, $parentObj = null, $propName = null)
     {
         foreach ($obj as $prop => $val) {
             if ($prop === 'array' && $parentObj != null && $propName != null) {
@@ -139,7 +139,7 @@ class Client
         }
     }
 
-    private static function addIntermediatePropNamedArray(object $paramsObject, string $propName): void
+    protected static function addIntermediatePropNamedArray(object $paramsObject, string $propName): void
     {
         $reflectionClass    = new ReflectionClass($paramsObject);
         $reflectionProperty = $reflectionClass->getParentClass()->getProperty($propName);
@@ -152,7 +152,7 @@ class Client
         $reflectionProperty->setValue($paramsObject, $propValue);
     }
 
-    private static function recursivelyTransformObjectToArray($object)
+    protected static function recursivelyTransformObjectToArray($object)
     {
         if (is_array($object)) {
             $result = [];
@@ -187,7 +187,7 @@ class Client
         return $object;
     }
 
-    private function mapJsonToObject($json, $object)
+    protected function mapJsonToObject($json, $object)
     {
         try {
             return $this->jsonMapper->map($json, $object);
@@ -205,7 +205,7 @@ class Client
         }
     }
 
-    private function findNestedPropAndSetValue($obj, string $propName, $propValue, $newValue)
+    protected function findNestedPropAndSetValue($obj, string $propName, $propValue, $newValue)
     {
         if (!is_object($obj)) {
             return;
