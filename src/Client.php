@@ -30,11 +30,11 @@ class Client
     const TECDOC_JSON_ENDPOINT =
         "https://webservice.tecalliance.services/pegasus-3-0/services/TecdocToCatDLB.jsonEndpoint?api_key=";
 
-    private $client;
-    private $url;
-    private $providerId;
-    private $jsonMapper;
-    private $apiKey;
+    protected $client;
+    protected $url;
+    protected $providerId;
+    protected $jsonMapper;
+    protected $apiKey;
 
     /**
      * Class constructor.
