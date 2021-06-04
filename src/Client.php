@@ -102,7 +102,7 @@ class Client
         return $this->mapJsonToObject($json, new GetArticleDirectSearchAllNumbersWithStateResponse());
     }
 
-    private function call(string $functionName, $paramsObject)
+    protected function call(string $functionName, $paramsObject)
     {
         $paramsArray             = self::recursivelyTransformObjectToArray($paramsObject);
         $paramsArray['provider'] = $this->providerId;
