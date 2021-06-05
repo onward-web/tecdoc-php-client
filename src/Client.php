@@ -15,6 +15,8 @@ use Myrzan\TecDocClient\Generated\GetLanguages;
 use Myrzan\TecDocClient\Generated\GetLanguagesResponse;
 use Myrzan\TecDocClient\Generated\GetVehicleByIds3;
 use Myrzan\TecDocClient\Generated\GetVehicleByIds3Response;
+use Myrzan\TecDocClient\Generated\GetGenericArticles;
+use Myrzan\TecDocClient\Generated\GetGenericArticlesResponse;
 use GuzzleHttp\Client as GuzzleClient;
 use JsonMapper;
 use ReflectionClass;
@@ -101,6 +103,13 @@ class Client
 
         return $this->mapJsonToObject($json, new GetArticleDirectSearchAllNumbersWithStateResponse());
     }
+    
+     public function getGenericArticles(GetGenericArticles $paramsObject): GetGenericArticlesResponse
+    {
+        $json = $this->call('getGenericArticles', $paramsObject);
+        return $this->mapJsonToObject($json, new GetGenericArticlesResponse());
+    }
+
 
     protected function call(string $functionName, $paramsObject)
     {
