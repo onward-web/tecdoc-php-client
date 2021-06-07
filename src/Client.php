@@ -20,6 +20,9 @@ use Myrzan\TecDocClient\Generated\GetGenericArticlesResponse;
 use Myrzan\TecDocClient\Generated\GetManufacturers;
 use Myrzan\TecDocClient\Generated\GetManufacturersResponse;
 
+use Myrzan\TecDocClient\Generated\GetModelSeries;
+use Myrzan\TecDocClient\Generated\GetModelSeriesResponse;
+
 
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -82,6 +85,12 @@ class Client
     {
         $json = $this->call('getManufacturers', $paramsObject);
         return $this->mapJsonToObject($json, new GetManufacturersResponse());
+    }
+
+    public function getModelSeries(GetModelSeries $paramsObject): GetModelSeriesResponse
+    {
+        $json = $this->call('getModelSeries', $paramsObject);
+        return $this->mapJsonToObject($json, new GetModelSeriesResponse());
     }
 
 
