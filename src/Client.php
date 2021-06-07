@@ -17,7 +17,13 @@ use Myrzan\TecDocClient\Generated\GetVehicleByIds3;
 use Myrzan\TecDocClient\Generated\GetVehicleByIds3Response;
 use Myrzan\TecDocClient\Generated\GetGenericArticles;
 use Myrzan\TecDocClient\Generated\GetGenericArticlesResponse;
+use Myrzan\TecDocClient\Generated\GetManufacturers;
+use Myrzan\TecDocClient\Generated\GetManufacturersResponse;
+
+
 use GuzzleHttp\Client as GuzzleClient;
+
+
 use JsonMapper;
 use ReflectionClass;
 use ReflectionObject;
@@ -65,11 +71,27 @@ class Client
         return $this->mapJsonToObject($json, new GetAmBrandsResponse());
     }
 
+    public function getGenericArticles(GetGenericArticles $paramsObject): GetGenericArticlesResponse
+    {
+        $json = $this->call('getGenericArticles', $paramsObject);
+        return $this->mapJsonToObject($json, new GetGenericArticlesResponse());
+    }
+
+
+    public function getManufacturers(GetManufacturers $paramsObject): GetManufacturersResponse
+    {
+        $json = $this->call('getArticles', $paramsObject);
+        return $this->mapJsonToObject($json, new GetManufacturersResponse());
+    }
+
+
+
     public function getArticles(GetArticles $paramsObject): GetArticlesResponse
     {
         $json = $this->call('getArticles', $paramsObject);
         return $this->mapJsonToObject($json, new GetArticlesResponse());
     }
+
 
     public function getVehicleByIds3(GetVehicleByIds3 $paramsObject): GetVehicleByIds3Response
     {
@@ -78,12 +100,6 @@ class Client
         return $this->mapJsonToObject($json, new GetVehicleByIds3Response());
     }
 
-    public function getArticleLinkedAllLinkingTargetsByIds3(GetArticleLinkedAllLinkingTargetsByIds3 $paramsObject): GetArticleLinkedAllLinkingTargetsByIds3Response
-    {
-        Client::addIntermediatePropNamedArray($paramsObject, 'linkedArticlePairs');
-        $json = $this->call('getArticleLinkedAllLinkingTargetsByIds3', $paramsObject);
-        return $this->mapJsonToObject($json, new GetArticleLinkedAllLinkingTargetsByIds3Response());
-    }
 
     public function getArticleLinkedAllLinkingTarget4(GetArticleLinkedAllLinkingTarget4 $paramsObject): GetArticleLinkedAllLinkingTarget4Response
     {
@@ -103,12 +119,14 @@ class Client
 
         return $this->mapJsonToObject($json, new GetArticleDirectSearchAllNumbersWithStateResponse());
     }
-    
-     public function getGenericArticles(GetGenericArticles $paramsObject): GetGenericArticlesResponse
+
+    public function getArticleLinkedAllLinkingTargetsByIds3(GetArticleLinkedAllLinkingTargetsByIds3 $paramsObject): GetArticleLinkedAllLinkingTargetsByIds3Response
     {
-        $json = $this->call('getGenericArticles', $paramsObject);
-        return $this->mapJsonToObject($json, new GetGenericArticlesResponse());
+        Client::addIntermediatePropNamedArray($paramsObject, 'linkedArticlePairs');
+        $json = $this->call('getArticleLinkedAllLinkingTargetsByIds3', $paramsObject);
+        return $this->mapJsonToObject($json, new GetArticleLinkedAllLinkingTargetsByIds3Response());
     }
+    
 
 
     protected function call(string $functionName, $paramsObject)
