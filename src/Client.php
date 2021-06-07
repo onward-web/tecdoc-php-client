@@ -23,6 +23,11 @@ use Myrzan\TecDocClient\Generated\GetManufacturersResponse;
 use Myrzan\TecDocClient\Generated\GetModelSeries;
 use Myrzan\TecDocClient\Generated\GetModelSeriesResponse;
 
+use Myrzan\TecDocClient\Generated\GetVehicleIdsByCriteria;
+use Myrzan\TecDocClient\Generated\GetVehicleIdsByCriteriaResponse;
+
+
+
 
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -91,6 +96,13 @@ class Client
     {
         $json = $this->call('getModelSeries', $paramsObject);
         return $this->mapJsonToObject($json, new GetModelSeriesResponse());
+    }
+
+
+    public function getVehicleIdsByCriteria(GetVehicleIdsByCriteria $paramsObject): GetVehicleIdsByCriteriaResponse
+    {
+        $json = $this->call('getVehicleIdsByCriteria', $paramsObject);
+        return $this->mapJsonToObject($json, new GetVehicleIdsByCriteriaResponse());
     }
 
 
