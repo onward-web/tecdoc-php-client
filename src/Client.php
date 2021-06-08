@@ -27,6 +27,9 @@ use Myrzan\TecDocClient\Generated\GetVehicleIdsByCriteria;
 use Myrzan\TecDocClient\Generated\GetVehicleIdsByCriteriaResponse;
 
 
+use Myrzan\TecDocClient\Generated\GetGenericArticlesByManufacturer6;
+use Myrzan\TecDocClient\Generated\GetGenericArticlesByManufacturer6Response;
+
 
 
 use GuzzleHttp\Client as GuzzleClient;
@@ -105,6 +108,12 @@ class Client
         return $this->mapJsonToObject($json, new GetVehicleIdsByCriteriaResponse());
     }
 
+    public function getVehicleByIds3(GetVehicleByIds3 $paramsObject): GetVehicleByIds3Response
+    {
+        Client::addIntermediatePropNamedArray($paramsObject, 'carIds');
+        $json = $this->call('getVehicleByIds3', $paramsObject);
+        return $this->mapJsonToObject($json, new GetVehicleByIds3Response());
+    }
 
 
     public function getArticles(GetArticles $paramsObject): GetArticlesResponse
@@ -113,13 +122,14 @@ class Client
         return $this->mapJsonToObject($json, new GetArticlesResponse());
     }
 
-
-    public function getVehicleByIds3(GetVehicleByIds3 $paramsObject): GetVehicleByIds3Response
+    public function getGenericArticlesByManufacturer6(GetGenericArticlesByManufacturer6 $paramsObject): GetGenericArticlesByManufacturer6Response
     {
-        Client::addIntermediatePropNamedArray($paramsObject, 'carIds');
-        $json = $this->call('getVehicleByIds3', $paramsObject);
-        return $this->mapJsonToObject($json, new GetVehicleByIds3Response());
+        $json = $this->call('getGenericArticlesByManufacturer6', $paramsObject);
+        return $this->mapJsonToObject($json, new GetGenericArticlesByManufacturer6Response());
     }
+
+
+
 
 
     public function getArticleLinkedAllLinkingTarget4(GetArticleLinkedAllLinkingTarget4 $paramsObject): GetArticleLinkedAllLinkingTarget4Response
