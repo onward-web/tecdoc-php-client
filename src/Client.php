@@ -31,6 +31,9 @@ use Myrzan\TecDocClient\Generated\GetGenericArticlesByManufacturer6;
 use Myrzan\TecDocClient\Generated\GetGenericArticlesByManufacturer6Response;
 
 
+use Myrzan\TecDocClient\Generated\GetCriteria2;
+use Myrzan\TecDocClient\Generated\GetCriteria2Response;
+
 
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -129,7 +132,11 @@ class Client
     }
 
 
-
+    public function getCriteria2(GetCriteria2 $paramsObject): GetCriteria2Response
+    {
+        $json = $this->call('getCriteria2', $paramsObject);
+        return $this->mapJsonToObject($json, new GetCriteria2Response());
+    }
 
 
     public function getArticleLinkedAllLinkingTarget4(GetArticleLinkedAllLinkingTarget4 $paramsObject): GetArticleLinkedAllLinkingTarget4Response
