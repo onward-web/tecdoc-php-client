@@ -34,6 +34,9 @@ use Myrzan\TecDocClient\Generated\GetGenericArticlesByManufacturer6Response;
 use Myrzan\TecDocClient\Generated\GetCriteria2;
 use Myrzan\TecDocClient\Generated\GetCriteria2Response;
 
+use Myrzan\TecDocClient\Generated\GetDirectArticlesByIds7;
+use Myrzan\TecDocClient\Generated\GetDirectArticlesByIds7Response;
+
 
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -156,6 +159,13 @@ class Client
         $json = $this->call('getArticleDirectSearchAllNumbersWithState', $paramsObject);
 
         return $this->mapJsonToObject($json, new GetArticleDirectSearchAllNumbersWithStateResponse());
+    }
+
+    public function getDirectArticlesByIds7(GetDirectArticlesByIds7 $paramsObject): GetDirectArticlesByIds7Response
+    {
+        $json = $this->call('getDirectArticlesByIds7', $paramsObject);
+
+        return $this->mapJsonToObject($json, new GetDirectArticlesByIds7Response());
     }
 
     public function getArticleLinkedAllLinkingTargetsByIds3(GetArticleLinkedAllLinkingTargetsByIds3 $paramsObject): GetArticleLinkedAllLinkingTargetsByIds3Response
