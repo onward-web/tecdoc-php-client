@@ -37,6 +37,9 @@ use Myrzan\TecDocClient\Generated\GetCriteria2Response;
 use Myrzan\TecDocClient\Generated\GetDirectArticlesByIds7;
 use Myrzan\TecDocClient\Generated\GetDirectArticlesByIds7Response;
 
+use Myrzan\TecDocClient\Generated\GetChildNodesPattern;
+use Myrzan\TecDocClient\Generated\GetChildNodesPatternResponse;
+
 
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -93,6 +96,13 @@ class Client
         $json = $this->call('getGenericArticles', $paramsObject);
         return $this->mapJsonToObject($json, new GetGenericArticlesResponse());
     }
+
+    public function getChildNodesPattern(GetChildNodesPattern $paramsObject): GetChildNodesPatternResponse
+    {
+        $json = $this->call('getChildNodesPattern', $paramsObject);
+        return $this->mapJsonToObject($json, new GetChildNodesPatternResponse());
+    }
+
 
 
     public function getManufacturers(GetManufacturers $paramsObject): GetManufacturersResponse
