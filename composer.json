@@ -17,7 +17,7 @@
         "xsd2php": "xsd2php convert xsd2php-config.yml TecdocToCatDLB.xsd"
     },
     "require": {
-        "php": "^7.3",
+        "php": "^7.3 || 8.*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.0.1",
         "netresearch/jsonmapper": "^4.0"
