@@ -1,10 +1,12 @@
 <?php
 namespace Myrzan\TecDocClient;
 
+use Myrzan\TecDocClient\Generated\ArticleIdsWithStateResponse;
 use Myrzan\TecDocClient\Generated\GetAmBrands;
 use Myrzan\TecDocClient\Generated\GetAmBrandsResponse;
 use Myrzan\TecDocClient\Generated\GetArticleDirectSearchAllNumbersWithState;
 use Myrzan\TecDocClient\Generated\GetArticleDirectSearchAllNumbersWithStateResponse;
+use Myrzan\TecDocClient\Generated\GetArticleIdsWithState;
 use Myrzan\TecDocClient\Generated\GetArticleLinkedAllLinkingTarget4;
 use Myrzan\TecDocClient\Generated\GetArticleLinkedAllLinkingTarget4Response;
 use Myrzan\TecDocClient\Generated\GetArticleLinkedAllLinkingTargetsByIds3;
@@ -151,6 +153,13 @@ class Client
         return $this->mapJsonToObject($json, new GetCriteria2Response());
     }
 
+    public function getArticleIdsWithState (GetArticleIdsWithState $paramsObject): ArticleIdsWithStateResponse
+    {
+        $json = $this->call('getArticleIdsWithState', $paramsObject);
+
+        return $this->mapJsonToObject($json, new ArticleIdsWithStateResponse());
+    }
+
 
     public function getArticleLinkedAllLinkingTarget4(GetArticleLinkedAllLinkingTarget4 $paramsObject): GetArticleLinkedAllLinkingTarget4Response
     {
@@ -184,7 +193,7 @@ class Client
         $json = $this->call('getArticleLinkedAllLinkingTargetsByIds3', $paramsObject);
         return $this->mapJsonToObject($json, new GetArticleLinkedAllLinkingTargetsByIds3Response());
     }
-    
+
 
 
     protected function call(string $functionName, $paramsObject)
